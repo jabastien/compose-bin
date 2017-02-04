@@ -7,8 +7,9 @@
         # - all images without at least one container associated to them
 # requires docker 1.13
 
-docker --version
+# source common script to set environment
+. "$(dirname "$0")/common"
 
-docker system df
+"$docker_bin" system df
 
-docker system prune --all --force
+"$docker_bin" system prune --all --force

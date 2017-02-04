@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+export docker_bin="$(which docker | head -n1)" 
+if [ ! -x "$docker_bin" ] 
+then
+	echo "docker not found, please run install script" 1>&2
+	exit 1
+else
+	"$docker_bin" --version
+fi
+
+export compose_bin="$(which docker-compose | head -n1)" 
+if [ ! -x "$compose_bin" ] 
+then
+	echo "docker-compose not found, please run install script" 1>&2
+	exit 1
+else
+	"$compose_bin" --version
+fi
+
+abs_root() { echo "$(cd "$(dirname "${1}")" && pwd)"; }
+project_root="$(abs_root "$(abs_root "$0")")"
+
+# source environment variables required for containers
+. "$project_root/compose.env"

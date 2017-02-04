@@ -5,9 +5,8 @@ if [ "$(id -u)" != "0" ]; then
 	exit 1
 fi
 
-abs_root() { echo "$(cd "$(dirname "${1}")" && pwd)"; }
-project_root="$(abs_root "$(abs_root "$0")")"
-project_name="$(basename "$project_root")"
+# source common script to set environment
+. "$(dirname "$0")/common"
 
 # install cron file while replacing the project root dir
 sed "s|#PROJECT_ROOT#|$project_root|g" "$project_root/$project_name.cron" > "/etc/cron.d/$project_name"
