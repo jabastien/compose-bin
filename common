@@ -20,6 +20,7 @@ fi
 
 abs_root() { echo "$(cd "$(dirname "${1}")" && pwd)"; }
 project_root="$(abs_root "$(abs_root "$0")")"
+project_name="$(basename "$project_root")"
 
 # source environment variables required for containers
 . "$project_root/compose.env"
