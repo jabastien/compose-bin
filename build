@@ -16,4 +16,4 @@ project_root="$(abs_root "$(abs_root "$0")")"
 . "$project_root/compose.env"
 
 # build megautils locally with compose
-"$compose_bin" -f "$project_root/docker-compose.yml" build --force-rm megautils
+"$compose_bin" -f "$project_root/docker-compose.yml" build --force-rm "${1}"
