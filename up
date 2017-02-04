@@ -15,5 +15,5 @@ project_root="$(abs_root "$(abs_root "$0")")"
 # source environment variables required for containers
 . "$project_root/compose.env"
 
-# pull latest images
-"$compose_bin" -f "$project_root/docker-compose.yml" pull
+# compose up (recreate if required, no build, remove orphans, disconnected)
+"$compose_bin" -f "$project_root/docker-compose.yml" up -d --no-build --remove-orphans
