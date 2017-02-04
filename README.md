@@ -1,4 +1,4 @@
-# Docker Media Server #
+# docker-bin #
 
 ## Description ##
 
