@@ -3,5 +3,5 @@
 # source common script to set environment
 . "$(dirname "$0")/common"
 
-# compose up (recreate if required, no build, remove orphans, disconnected)
+# compose up
 "$compose_bin" -f "$project_root/docker-compose.yml" up -d ${1}
