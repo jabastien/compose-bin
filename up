@@ -4,4 +4,4 @@
 . "$(dirname "$0")/common"
 
 # compose up (recreate if required, no build, remove orphans, disconnected)
-"$compose_bin" -f "$project_root/docker-compose.yml" up -d --no-build --remove-orphans ${1}
+"$compose_bin" -f "$project_root/docker-compose.yml" up -d ${1}
