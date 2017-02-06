@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 
-export docker_bin="$(which docker | head -n1)" 
+docker_bin="/usr/bin/docker"
+[ -x "$docker_bin" ] || docker_bin="$(which docker | head -n1)" 
 if [ ! -x "$docker_bin" ] 
 then
 	echo "docker not found, please run install script" 1>&2
 	exit 1
 else
+	export docker_bin
 	"$docker_bin" --version
 fi
 
-export compose_bin="$(which docker-compose | head -n1)" 
+compose_bin="/usr/local/bin/docker-compose"
+[ -x "$compose_bin" ] || compose_bin="$(which docker-compose | head -n1)" 
 if [ ! -x "$compose_bin" ] 
 then
 	echo "docker-compose not found, please run install script" 1>&2
 	exit 1
 else
+	export compose_bin
 	"$compose_bin" --version
 fi
 
