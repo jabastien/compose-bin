@@ -43,10 +43,17 @@ install_compose()
 	docker-compose --version
 }
 
+# includes ts utility for timestamping logs
+install_moreutils()
+{
+	apt-get install "moreutils" -y
+}
+
 install_all()
 {
 	install_docker
 	install_compose
+	install_moreutils
 }
 
 usage()

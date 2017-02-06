@@ -8,16 +8,28 @@ Generally included as a submodule of other projects.
 ## Installing ##
 https://github.com/blog/2104-working-with-submodules
 ```bash
-cd ~/my-compose-project
-git submodule add -b master git@github.com:klutchell/docker-bin.git bin
-git commit -m "docker-bin submodule"
-git submodule update --init --recursive
+$ cd /main/project
+$ git submodule add -b master git@github.com:klutchell/docker-bin.git bin
+$ git commit -m "docker-bin submodule"
+$ git submodule update --init --recursive
 ```
 
-## Updating ##
-https://github.com/blog/2104-working-with-submodules
+## Usage ##
+The submodule is its own repo/work-area, with its own .git directory.
+So, first commit/push your submodule's changes:
 ```bash
-git submodule update --init --recursive
+$ cd path/to/submodule
+$ git add <stuff>
+$ git commit -m "comment"
+$ git push
+```
+
+Then tell your main project to track the updated version:
+```bash
+$ cd /main/project
+$ git add path/to/submodule
+$ git commit -m "updated my submodule"
+$ git push
 ```
 
 ## Contributing ##
