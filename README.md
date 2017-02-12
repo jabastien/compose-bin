@@ -1,4 +1,4 @@
-# docker-bin #
+# compose-bin #
 
 ## Description ##
 
@@ -9,8 +9,8 @@ Generally included as a submodule of other projects.
 https://github.com/blog/2104-working-with-submodules
 ```bash
 $ cd /main/project
-$ git submodule add -b master git@github.com:klutchell/docker-bin.git bin
-$ git commit -m "docker-bin submodule"
+$ git submodule add -b master git@github.com:klutchell/compose-bin.git bin
+$ git commit -m "compose-bin submodule"
 $ git submodule update --init --recursive
 ```
 
