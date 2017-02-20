@@ -16,12 +16,30 @@ install_docker()
 	usermod -aG docker "$(who -m | awk '{print $1;}')"
 }
 
+install_pip()
+{
+	wget https://bootstrap.pypa.io/get-pip.py
+	python get-pip.py
+}
+
+install_virtualenv()
+{
+	install_pip
+	pip install --upgrade virtualenv virtualenvwrapper
+	rm -rf ~/.cache/pip
+	export WORKON_HOME=~/.virtualenvs
+	mkdir -p "$WORKON_HOME" || true
+	source /usr/local/bin/virtualenvwrapper.sh
+}
+
 # install docker-compose
 install_compose()
 {
-	apt install -y python-pip
-	pip install --upgrade pip
+	install_virtualenv
+	mkvirtualenv docker-compose -p python2
 	pip install --upgrade docker-compose
+	ln -sf "$(which docker-compose)" /usr/local/bin/docker-compose
+	deactivate
 	docker-compose --version
 }
 
