@@ -18,8 +18,7 @@ install_docker()
 
 install_pip()
 {
-	wget https://bootstrap.pypa.io/get-pip.py
-	python get-pip.py
+	curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python2.7
 }
 
 install_virtualenv()
@@ -27,7 +26,7 @@ install_virtualenv()
 	install_pip
 	pip install --upgrade virtualenv virtualenvwrapper
 	rm -rf ~/.cache/pip
-	export WORKON_HOME=~/.virtualenvs
+	export WORKON_HOME="/home/$(who -m | awk '{print $1;}')/.virtualenvs"
 	mkdir -p "$WORKON_HOME" || true
 	source /usr/local/bin/virtualenvwrapper.sh
 }
